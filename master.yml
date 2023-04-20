@@ -1,0 +1,6 @@
+---
+ - name: create directory
+   import_playbook: dir.yml
+  
+ - name: create file    
+   import_playbook: file.yml

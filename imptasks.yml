@@ -1,0 +1,5 @@
+---
+ - name: install and (enable and start service of) httpd package
+   hosts: all
+   tasks:
+    - import_tasks: pkg.yml

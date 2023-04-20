@@ -1,0 +1,8 @@
+---
+ - name: create file
+   hosts: all
+   tasks:
+          - name: create a file
+            file:
+                  name: cooler
+                  state: touch
