@@ -1,0 +1,8 @@
+---
+ - name: using template gather facts
+   hosts: all
+   tasks: 
+          - name: templates
+            template:
+                    src: /root/hi.j2
+                    dest: /hi1.txt

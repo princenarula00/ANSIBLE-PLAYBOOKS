@@ -1,0 +1,15 @@
+---
+ - name: understanding handlers
+   hosts: all
+   tasks: 
+          - name: change selinux as permissive mode
+            lineinfile:
+                  name: /etc/selinux/config
+                  regexp: '^SELINUX='
+                  line: SELINUX=enforcing
+            notify: reboot machine
+
+   handlers:
+          - name: reboot machine
+            reboot:
+

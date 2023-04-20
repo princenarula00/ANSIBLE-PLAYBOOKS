@@ -1,0 +1,9 @@
+---
+ - name: check facts
+   hosts: all
+   tasks: 
+          - name: copy
+            copy:
+                  src: /root/helloo.txt
+                  dest: /helloo.txt
+

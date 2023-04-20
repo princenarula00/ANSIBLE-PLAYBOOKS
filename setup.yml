@@ -1,0 +1,7 @@
+---
+ - name: gether facts
+   hosts: dev
+   tasks:
+          - name: gathering dev group facts
+            debug:
+              msg: "this my rredhat distribution:::::::::::::::{{ ansible_facts.distribution }}"

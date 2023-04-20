@@ -1,0 +1,14 @@
+---
+ - name: manage SElinux
+   hosts: all
+   tasks: 
+          - name: Understand handlers
+            lineinfile:
+                  path: /etc/selinux/config
+                  regexp: '^SELINUX='
+                  line: SELINUX=permissive
+            notify: reboot machine
+
+   handlers:
+          - name: reboot machine
+            reboot:

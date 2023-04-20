@@ -1,0 +1,8 @@
+---
+ - name: configure web
+   hosts: all
+   tasks:
+          - name: using template
+            template:
+                    src: /root/conf.j2
+                    dest: /etc/httpd/conf.d/xyz.conf

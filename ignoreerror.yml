@@ -1,0 +1,14 @@
+---
+ - name: ignore errors
+   hosts: all
+   tasks:
+            - name: install pkg
+              yum:
+                    name: vhgh
+                    state: present
+              ignore_errors: yes
+
+            - name: create group
+              group:
+                    name: pc1
+                    state: present

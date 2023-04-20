@@ -1,0 +1,8 @@
+---
+ - name: install softwares
+   hosts: all
+   tasks:
+          - name: install some software
+            dnf:
+                name: httpd,traceroute,git,docker
+                state: present

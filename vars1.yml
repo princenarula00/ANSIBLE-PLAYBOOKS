@@ -1,0 +1,14 @@
+test_1:
+        groups_1: 
+                  - 1lappy01
+                  - 2lappy02
+                  - 3lappy03
+        users_1:
+                  - 1laptop01
+                  - 2laptop02
+                  - 3laptop03
+
+        files_1: 
+                  - 1pc01
+                  - 2pc02
+                  - 3pc03

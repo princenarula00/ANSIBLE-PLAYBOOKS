@@ -1,0 +1,10 @@
+user:
+      dev:
+            name: gaurav
+            name1: saluja
+            group: Development
+
+      test:
+            name: akhilesh
+            name1: ji
+            group: gip

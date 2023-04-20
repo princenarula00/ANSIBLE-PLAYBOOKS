@@ -1,0 +1,27 @@
+---
+ - name: create some users
+   hosts: all
+   vars_files:
+        - vars1.yml
+   tasks:
+        - name: create group
+          group:
+                name: "{{ item }}"
+                state: present
+
+          loop: "{{ test_1.groups_1 }}"
+
+        - name: create user_1
+          user:
+                name: "{{ item }}"
+                state: present
+
+          loop: "{{ test_1.users_1 }}"
+                
+        - name: create some file
+          file: 
+                name: "{{ item}}"
+                state: touch
+
+          loop: "{{ test_1.files_1 }}"
+                

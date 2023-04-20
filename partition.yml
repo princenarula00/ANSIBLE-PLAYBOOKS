@@ -1,0 +1,56 @@
+---
+ - name: create two partion size 2G each with filesystem and mount also
+   hosts: all
+   tasks:
+          - name: create partion no. one
+            parted: 
+                    device: /dev/sdb
+                    number: 1
+                    state: present
+                    fs_type: ext4 
+                    part_end: 2GiB
+
+          - name: create partion no. two
+            parted:
+                    device: /dev/sdb
+                    number: 2
+                    state: present
+                    fs_type: xfs
+                    part_start: 2GiB
+                    part_end: 4GiB
+
+          - name: first partition format
+            filesystem:
+                    fstype: ext4
+                    dev: /dev/sdb1
+
+          - name: second partition format
+            filesystem:
+                    fstype: xfs
+                    dev: /dev/sdb2
+
+          - name: create directory /part/one
+            file:
+                    path: /part/one
+                    state: directory
+
+          - name: create directory /part/two
+            file:
+                    path: /part/two
+                    state: directory
+
+          - name: mount first partition on /part/one
+            mount:
+                    path: /part/one
+                    src: /dev/sdb1
+                    fstype: ext4
+                    opts: defaults
+                    state: mounted
+
+          - name: mount second partiton on /part/two
+            mount:
+                    path: /part/two
+                    src: /dev/sdb2
+                    fstype: xfs
+                    opts: defaults
+                    state: mounted

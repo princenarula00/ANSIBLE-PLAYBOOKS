@@ -1,0 +1,12 @@
+$TTL 1M
+@	IN SOA	@ rname.invalid. (
+					0	; serial
+					1D	; refresh
+					1H	; retry
+					1W	; expire
+					3H )	; minimum
+{{ domain_name }}. 	IN	NS	ns1.{{ domain_name }}.
+{{ domain_name }}.	IN	NS	ns2.{{ domain_name }}.
+ns1			IN	A	{{ ansible_facts.default_ipv4.address }}
+ns2			IN	A	{{ ansible_facts.default_ipv4.address }}
+{{ domain_name }}.	IN	A	1.2.3.4

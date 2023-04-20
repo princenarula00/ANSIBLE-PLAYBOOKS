@@ -1,0 +1,19 @@
+---
+ - name: craete webserver normal
+   hosts: all
+   tasks:
+          - name: install httpd package
+            yum: 
+                  name: httpd
+                  state: latest
+
+          - name: service start enable and start
+            service:
+                  name: httpd
+                  enabled: yes
+                  state: started
+
+          - name: using templete
+            template:
+                  src: /root/hii.j2
+                  dest: /var/www/html/index.html

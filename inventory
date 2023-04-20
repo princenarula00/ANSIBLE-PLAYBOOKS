@@ -1,0 +1,10 @@
+[dev]
+node1
+
+[test]
+node2
+
+[cloudservers]
+cloudserver1
+cloudserver2
+cloudserver3

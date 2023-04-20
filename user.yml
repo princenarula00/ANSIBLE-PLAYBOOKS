@@ -1,0 +1,16 @@
+---
+ - name: creating user grrassolution and gip group
+   hosts: all
+   tasks:
+          - name: create gip group
+            group:
+                  name: gip
+                  state: present
+
+          - name: create grrassolution user
+            user:
+                  name: grrassolution
+                  state: present
+                  group: gip
+                  password: $6$4.qB5fp3FlD9Sjan$yCCXTHBdFY2LbTDLeE/9ayeQIOOfhEHG4B579ilEMzAiRSkrbtAueD7GHAcFKPEE4/Dks5lstbYr7tmhcVqX5.
+        

@@ -1,0 +1,20 @@
+---
+ - name: schedule a cronjob
+   hosts: all
+   tasks:
+          - name: install cronie software
+            yum:
+                  name: cronie
+                  state: present
+
+          - name: enable and start service of cronie
+            service:
+                  name: crond
+                  enabled: yes
+                  state: started
+
+          - name: create cronjob
+            cron:
+                  name: "task run in every 3 minutes"
+                  minute: "*/3"
+                  job: echo "i am harman" >> name.txt

@@ -1,0 +1,17 @@
+---
+ - name: handlers
+   hosts: all
+   tasks: 
+          - name: create directory
+            file: 
+                  path: /direc
+                  state: directory
+            notify: create user
+
+   handlers:
+          - name: create user
+            user:
+                  name: daya
+                  state: present 
+            
+

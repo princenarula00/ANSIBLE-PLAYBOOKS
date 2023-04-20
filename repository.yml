@@ -1,0 +1,34 @@
+---
+ - name: mount iso file to /iso and create repository ( App Stream and BaseOS ) all managed host
+   hosts: all
+   tasks:
+          - name: create directory /iso
+            file:
+                  path: /iso
+                  state: directory
+          - name: mount iso image to /iso
+            mount:
+                  path: /iso
+                  src: /dev/sr0
+                  fstype: auto
+                  opts: defaults
+                  state: mounted
+
+          - name: configure repo for AppStream
+            yum_repository:
+                  name: AppStream
+                  baseurl: file:///iso/AppStream
+                  gpgcheck: 0
+                  enabled: 1
+                  description: AppStream repo
+
+          - name: configure repo for BaseOS
+            yum_repository:
+                  name: BaseOS
+                  baseurl: file:///iso/BaseOS
+                  gpgcheck: 0
+                  enabled: 1
+                  description: BaseOS repo 
+
+
+

@@ -1,0 +1,23 @@
+---
+ - name: create user, group and install package
+   hosts: all
+   tasks:
+          - name: create user
+            user:
+                  name: "{{ my_u }}"
+                  state: present
+
+          - name: create group
+            group:
+                  name: "{{ my_g }}"
+                  state: present
+
+          - name: install package
+            yum:
+                  name: "{{ my_pkg }}"
+                  state: present
+                  
+
+
+
+

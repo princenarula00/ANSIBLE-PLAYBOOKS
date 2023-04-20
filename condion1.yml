@@ -1,0 +1,10 @@
+---
+ - name: simple example via conditional
+   hosts: all
+   tasks:
+          - name: bind-utils installation
+            yum:
+                name: bind-utils
+                state: absent
+
+            when: ansible_facts.memfree_mb > 211

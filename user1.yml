@@ -1,0 +1,43 @@
+---
+ - name: create user and group with array 
+   hosts: all
+   vars_files:
+          - ./vars.yml
+   tasks:
+          - name: create first group
+            group:
+                    name: "{{ user.dev.group }}"
+                    state: present
+          - name: create second group
+            group: 
+                    name: "{{ user.test.group }}"
+                    state: present
+
+          - name: create first user 
+            user: 
+                    name: "{{ user.dev.name }}"
+                    state: present
+                    groups: "{{ user.dev.group }}"
+
+          - name: create first ka second user
+            user:
+                    name: "{{ user.dev.name1 }}"
+                    state: present
+                    groups: "{{ user.dev.group }}"
+
+          - name: create second user
+            user:
+                    name: "{{ user.test.name }}"
+                    state: present
+                    groups: "{{ user.test.group }}"
+
+          - name: create second ka second user
+            user:
+                    name: "{{ user.test.name1 }}"
+                    state: present
+                    groups: "{{ user.test.group }}"
+
+            register: user_out
+
+          - debug: 
+                    var: user_out

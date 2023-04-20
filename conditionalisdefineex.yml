@@ -1,0 +1,12 @@
+---
+ - name: create partition with is define conditional
+   hosts: all
+   tasks:   
+          - name: create 1st partition
+            parted:
+                  device: /dev/sdd
+                  number: 1
+                  state: present
+                  part_end: 1GiB
+
+            when: ansible_facts.devices.sdd is defined

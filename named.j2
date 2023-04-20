@@ -1,0 +1,8 @@
+options{
+	directory "/var/named";
+	recursion no;
+};
+zone "{{ domain_name }}" IN {
+	type master;
+	file "{{ zone_name }}";
+};

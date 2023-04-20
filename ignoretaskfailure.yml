@@ -1,0 +1,17 @@
+---
+ - name: ignoring task failure (ignore_errors)
+   hosts: all
+   tasks:
+          - name: install package
+            yum:
+                  name: kishjck
+                  stste: present
+
+            ignore_errors: yes
+
+          - name: create user
+            user:
+                  name: bhim
+                  state: present
+                
+

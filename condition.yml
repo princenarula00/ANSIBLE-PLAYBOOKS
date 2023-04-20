@@ -1,0 +1,11 @@
+---
+ - name: second exp of conditional task
+   hosts: all
+   tasks:
+          - name: create file with one line in this
+            lineinfile:
+                    path: /condition.txt
+                    line: "this is ipv6 anything"
+                    create: yes
+
+            when: ansible_facts.python_version == "3.9.14"

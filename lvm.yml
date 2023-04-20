@@ -1,0 +1,61 @@
+---
+ - name: creating lvm
+   hosts: all
+   tasks:
+          - name: create pv and vg
+            lvg:
+                  vg: myvg
+                  pvs: /dev/sdc
+                  pesize: 32
+                  
+          - name: create lv1
+            lvol:
+                  vg: myvg
+                  lv: lv01
+                  size: 10
+                  force: true
+
+          - name: create lv2
+            lvol:
+                  vg: myvg
+                  lv: lv02
+                  size: 10
+                  force: true
+
+          - name: file system format
+            filesystem:
+                  dev: /dev/myvg/lv01
+                  fstype: ext4
+
+          - name: file system format
+            filesystem:
+                  dev: /dev/myvg/lv02
+                  fstype: xfs
+
+          - name: create first directory
+            file:
+                  path: /lvm/firstlv01
+                  state: directory
+
+          - name: create second directory
+            file:
+                  path: /lvm/secondlv02
+                  state: directory
+
+          - name: mount first lvm partition
+            mount:
+                  path: /lvm/firstlv01
+                  src: /dev/myvg/lv01
+                  fstype: ext4
+                  opts: defaults
+                  state: mounted
+
+          - name: mount second lvm partition
+            mount:
+                  path: /lvm/secondlv02
+                  src: /dev/myvg/lv02
+                  fstype: xfs
+                  opts: defaults
+                  state: mounted
+                  
+

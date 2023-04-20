@@ -1,0 +1,31 @@
+---
+ - name: create webserver 
+   hosts: all
+   tasks: 
+          - name: install httpd and firewalld package
+            yum:
+                  name: httpd,firewalld
+                  state: latest
+
+          - name: start and enable service of httpd and firewalld
+            service:
+                  name: "{{ item }}"
+                  state: started
+                  enabled: yes
+            loop: 
+                  - httpd
+                  - firewalld
+
+          - name: add line in index.html
+            lineinfile:
+                  path: /var/www/html/index.html
+                  line: -------------------- HELLO ASHUTOSH -------------- HOW ARE YOU!!!!!---------
+                  create: yes
+
+          - name: allow firewalld port
+            firewalld:
+                  service: http
+                  state: enabled
+                  permanent: true
+                  immediate: yes
+

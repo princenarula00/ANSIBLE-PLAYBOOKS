@@ -1,0 +1,32 @@
+---
+ - name: configure DNS server
+   hosts: all
+   tasks: 
+          - name: install bind package
+            yum:
+                  name: "bind*"
+                  state: present
+
+          - name: enable and start service
+            service:
+                  name: named
+                  enabled: yes
+                  state: started
+
+          - name: configure default configuration of named
+            template:
+                  src: /root/ansible/named.j2
+                  dest: /etc/named.conf
+                  backup: yes
+
+          - name: configure zone file
+            template:
+                  src: zone.j2
+                  dest: "/var/named/{{ zone_name }}"
+                  group: named
+
+          - name: restart named service
+            service:
+                  name: named
+                  state: restarted
+

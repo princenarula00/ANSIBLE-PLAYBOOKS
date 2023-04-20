@@ -1,0 +1,8 @@
+---
+ - name: template using loop(forloop) with magic variable
+   hosts: all
+   tasks:
+          - name: using template
+            template:
+                    src: /hosts.j2
+                    dest: /etc/hosts

@@ -1,0 +1,36 @@
+---
+ - name: create webserver
+   hosts: all
+   tasks:
+        - name: install software
+          yum: 
+                name: httpd,firewalld
+                state: present
+
+        - name: enable and start httpd service
+          service:
+                name: httpd
+                state: started
+                enabled: yes
+
+        - name: enable and start firewalld service
+          service:
+                name: firewalld
+                state: started
+                enabled: yes
+                
+        - name: firewall access
+          firewalld:
+                service: http
+                permanent: true
+                state: enabled
+                immediate: yes
+
+        - name: add a line in file
+          lineinfile:
+                path: /var/www/html/index.html
+                line: hello everyone, HOW ARE YOU!!!
+                create: yes
+
+
+

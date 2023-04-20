@@ -1,0 +1,24 @@
+---
+ - name: forcefully handlers run
+   hosts: all
+   force_handlers: yes
+   tasks: 
+          - name: install package
+            dnf:
+                  name: mariadb
+                  state: present
+            
+            notify: create group
+
+          - name: create user
+            user:
+                  nam: catel
+                  state: present
+
+   handlers:
+          - name: create group
+            group:
+                  name: sim
+                  state: present
+
+
