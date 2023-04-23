@@ -1,0 +1,18 @@
+---
+# tasks file for myweb
+
+ - name: install httpd package
+   yum:
+        name: "{{ my_pkg }}"
+        state: present
+
+ - name: enable and start httpd service
+   service:
+        name: "{{ my_srvc }}"
+        enabled: yes
+        state: started
+
+ - name: create index.html
+   template:
+        src: index.html.j2
+        dest: /var/www/html/index.html

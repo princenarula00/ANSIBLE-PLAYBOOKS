@@ -1,0 +1,5 @@
+---
+ - name: install ansible galaxy web project
+   hosts: cloudservers
+   roles: 
+          - buluma.httpd

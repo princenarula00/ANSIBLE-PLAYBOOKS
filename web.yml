@@ -1,0 +1,8 @@
+---
+ - name: configure webserver using roles
+   hosts: cloudservers
+   vars:
+          - my_pkg: nginx
+          - my_srvc: nginx
+   roles:
+          - myweb

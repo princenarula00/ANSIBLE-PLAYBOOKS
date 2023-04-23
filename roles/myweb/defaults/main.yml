@@ -1,0 +1,4 @@
+---
+# defaults file for myweb
+my_pkg: httpd
+my_srvc: httpd

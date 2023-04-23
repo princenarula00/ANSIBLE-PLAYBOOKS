@@ -1,0 +1,5 @@
+---
+ - name: configure webserver via roles
+   hosts: cloudservers
+   roles:
+          - webserver

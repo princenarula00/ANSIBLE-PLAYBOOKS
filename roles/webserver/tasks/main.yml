@@ -1,0 +1,17 @@
+---
+# tasks file for webserver
+ - name: install httpd package
+   dnf:
+        name: "{{ my_pkg }}"
+        state: present
+
+ - name: create index file
+   template: 
+        src: "{{ doc_root }}"
+        dest: /var/www/html/index.html
+   notify: restart httpd service
+
+ - name: copy file
+   copy:
+        src: roling.txt
+        dest: /

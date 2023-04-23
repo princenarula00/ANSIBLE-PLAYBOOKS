@@ -1,0 +1,3 @@
+---
+# vars file for webserver
+my_pkg: httpd
